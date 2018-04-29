@@ -5,25 +5,17 @@
 --
 
 server_scripts {
-
   -- Core
   "src/database.server.lua",
-
   -- MySQL libs
   "src/GHMattiMySQL.server.lua",
   "src/BrouznoufMySQL.server.lua",
-
-  -- Test
-  "test.lua",
-
 }
 
 server_exports {
-
     "QueryExecute",
     "QueryFetchAll",
     "QueryFetch",
-
     "QueryExecuteAsync",
     "QueryFetchAllAsync",
     "QueryFetchAsync",

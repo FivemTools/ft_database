@@ -1,4 +1,4 @@
-# ft_orm
+# ft_database
 
 ### Prerequisites
 
@@ -16,19 +16,19 @@ Put the folder where you want it and add it to the server.cfg file :
 Example:
 
 ```
-start ft_orm
+start ft_database
 ```
 
 or put in to dependencies in __resource.lua :
 
 ```
-dependency 'ft_orm'
+dependency 'ft_database'
 
 or
 
 dependencies {
   ...
-  'ft_orm',
+  'ft_database',
   ...
 }
 
@@ -36,7 +36,7 @@ dependencies {
 
 ### Documentation
 
-[Online](https://fivemtools-orm.readme.io/)
+[Online](https://fivemtools-database.readme.io/)
 
 ## License
 
