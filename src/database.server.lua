@@ -62,7 +62,7 @@ end
 function QueryFetch(query, parameters)
     assert(type(query) == "string", "The SQL Query must be a string")
     parameters = safeParameters(parameters)
-    return libs[lib].Sync.fetchScalar(query, parameters)
+    return libs[lib].Sync.fetch(query, parameters)
 end
 
 --
