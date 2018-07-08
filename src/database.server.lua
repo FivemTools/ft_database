@@ -114,7 +114,7 @@ end
 --
 --
 --
-function QueryReady(callback)
+AddEventHandler('ft_database:OnReady', function(callback)
 
     libs[lib].ready(callback)
 
@@ -128,7 +128,7 @@ AddEventHandler('onServerResourceStart', function(resource)
     if resource == 'ft_database' then
         lib = GetConvar("ft_database_lib", "false")
         if lib ~= "false" and libs[lib] then
-            TriggerEvent("ft_database:OnReady")
+            TriggerEvent("ft_database:IsStarted")
         else
             print("[FT_DABASE] ft_database_lib not define or lib not exist, add 'ft_database_lib' on server.cfg")
         end
