@@ -19,4 +19,5 @@ server_exports {
     "QueryExecuteAsync",
     "QueryFetchAllAsync",
     "QueryFetchAsync",
+    "QueryReady",
 }
