@@ -118,7 +118,7 @@ AddEventHandler('ft_database:OnReady', function(callback)
 
     libs[lib].ready(callback)
 
-end
+end)
 
 --
 --
