@@ -28,7 +28,7 @@ end
 --
 --
 function MySQL.Sync.fetch(query, parameters)
-    return exports['mysql-async']:mysql_sync_fetch_scalar(query, parameters)
+    return exports['mysql-async']:mysql_sync_fetch_all(query, parameters)[1]
 end
 
 --
@@ -49,7 +49,9 @@ end
 --
 --
 function MySQL.Async.fetch(query, parameters, callback)
-    exports['mysql-async']:mysql_fetch_scalar(query, parameters, callback)
+    exports['mysql-async']:mysql_fetch_scalar(query, parameters, function(result)
+        callback(result[1])
+    end)
 end
 
 --
