@@ -10,7 +10,7 @@ libs = {}
 --
 --
 --
-local function safeParameters(params)
+local function SafeParameters(params)
 
     if nil == params then
         return {['1'] = 1}
@@ -30,7 +30,7 @@ end
 --
 --
 --
-local function safeCallback(callback)
+local function SafeCallback(callback)
 
     if callback == nil then
         return function() end
@@ -48,7 +48,7 @@ end
 function QueryExecute(query, parameters)
 
     assert(type(query) == "string", "EROOR on ft_database : The SQL Query must be a string")
-    parameters = safeParameters(parameters)
+    parameters = SafeParameters(parameters)
     return libs[lib].Sync.execute(query, parameters)
 
 end
@@ -59,7 +59,7 @@ end
 function QueryFetchAll(query, parameters)
 
     assert(type(query) == "string", "EROOR on ft_database : The SQL Query must be a string")
-    parameters = safeParameters(parameters)
+    parameters = SafeParameters(parameters)
     return libs[lib].Sync.fetchAll(query, parameters)
 
 end
@@ -70,7 +70,7 @@ end
 function QueryFetch(query, parameters)
 
     assert(type(query) == "string", "EROOR on ft_database : The SQL Query must be a string")
-    parameters = safeParameters(parameters)
+    parameters = SafeParameters(parameters)
     return libs[lib].Sync.fetch(query, parameters)
 
 end
@@ -81,8 +81,8 @@ end
 function QueryExecuteAsync(query, parameters, callback)
 
     assert(type(query) == "string", "EROOR on ft_database :The SQL Query must be a string")
-    parameters = safeParameters(parameters)
-    callback = safeCallback(callback)
+    parameters = SafeParameters(parameters)
+    callback = SafeCallback(callback)
     libs[lib].Async.execute(query, parameters, callback)
 
 end
@@ -93,8 +93,8 @@ end
 function QueryFetchAllAsync(query, parameters, callback)
 
     assert(type(query) == "string", "EROOR on ft_database : The SQL Query must be a string")
-    parameters = safeParameters(parameters)
-    callback = safeCallback(callback)
+    parameters = SafeParameters(parameters)
+    callback = SafeCallback(callback)
     libs[lib].Async.fetchAll(query, parameters, callback)
 
 end
@@ -105,8 +105,8 @@ end
 function QueryFetchAsync(query, parameters, callback)
 
     assert(type(query) == "string", "EROOR on ft_database : The SQL Query must be a string")
-    parameters = safeParameters(parameters)
-    callback = safeCallback(callback)
+    parameters = SafeParameters(parameters)
+    callback = SafeCallback(callback)
     libs[lib].Async.fetchScalar(query, parameters, callback)
 
 end
