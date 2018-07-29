@@ -28,6 +28,16 @@ end
 --
 --
 function MySQL.Sync.fetch(query, parameters)
+    if not string.find(query, "LIMIT") and not string.find(query, "limit") then
+        query = query .. " LIMIT 1"
+    end
+    return exports["GHMattiMySQL"]:QueryResult(query, parameters)
+end
+
+--
+--
+--
+function MySQL.Sync.scalar(query, parameters)
     return exports["GHMattiMySQL"]:QueryScalar(query, parameters)
 end
 
@@ -49,6 +59,18 @@ end
 --
 --
 function MySQL.Async.fetch(query, parameters, callback)
+    if not string.find(query, "LIMIT") and not string.find(query, "limit") then
+        query = query .. " LIMIT 1"
+    end
+    exports["GHMattiMySQL"]:QueryResultAsync(query, parameters, function()
+        callback(result[1])
+    end)
+end
+
+--
+--
+--
+function MySQL.Async.scalar(query, parameters, callback)
     exports["GHMattiMySQL"]:QueryScalarAsync(query, parameters, callback)
 end
 
@@ -61,11 +83,13 @@ AddEventHandler("GHMattiMySQLStarted", function()
 end)
 
 function MySQL.ready(callback)
+
     if isReady then
         callback()
-        return
-    end
-    AddEventHandler("GHMattiMySQLStarted", callback)
+    else
+        AddEventHandler("GHMattiMySQLStarted", callback)
+    end    
+
 end
 
 --
