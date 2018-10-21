@@ -4,7 +4,7 @@
 -- @License: GNU General Public License v3.0
 --
 
-local lib = nil
+local lib = GetConvar("ft_database_lib", "false")
 libs = {}
 
 --
@@ -114,6 +114,7 @@ end
 --
 --
 --
+RegisterServerEvent("ft_database:OnReady")
 AddEventHandler('ft_database:OnReady', function(callback)
 
     libs[lib].ready(callback)
@@ -126,7 +127,6 @@ end)
 AddEventHandler('onServerResourceStart', function(resource)
 
     if resource == 'ft_database' then
-        lib = GetConvar("ft_database_lib", "false")
         if lib ~= "false" and libs[lib] then
             TriggerEvent("ft_database:IsStarted")
         else
